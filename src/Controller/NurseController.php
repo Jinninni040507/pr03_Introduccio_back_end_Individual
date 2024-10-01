@@ -21,7 +21,7 @@ class NurseController extends AbstractController
         "elena.garcia@email.com" => array("name" => "Elena García", "password" => "T6u7V8w9X0")
     );
 
-    #[Route('/NurseController/nurse/index', name: 'app_home')]
+    #[Route('/NurseController/nurse/index', name: 'Nurses List', methods:['GET'] )]
     public function index(): JsonResponse
     {
 
