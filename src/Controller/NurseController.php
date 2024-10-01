@@ -24,12 +24,17 @@ class NurseController extends AbstractController
     #[Route('/nurse/index', name: 'Nurses List', methods:['GET'] )]
     public function index(): JsonResponse
     {
+        $return_nurses = array();
+        // Comprobar si hay info en el array de nurses
+        if (isset(self::$nurses)) {
+            // Recorrer el array para guardarlo en otro para solo mostrar nombre y email
+            foreach (self::$nurses as $email => $data) {
+                $return_nurses[$email] = array("name" => $data["name"]);
+            }
+        }
 
-        return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/NurseController.php',
-        ]);
+        // return el array creado pasado a formato json
+        return new JsonResponse($return_nurses);
     }
 
-    
 }
